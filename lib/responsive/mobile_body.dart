@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:responsivedashboard/constants.dart';
-import 'package:responsivedashboard/util/my_box.dart';
-import 'package:responsivedashboard/util/my_tile.dart';
+import '../constants.dart';
+import '../util/my_box.dart';
+import '../util/my_tile.dart';
 
 class MobileScaffold extends StatefulWidget {
   const MobileScaffold({Key? key}) : super(key: key);
@@ -16,26 +16,44 @@ class _MobileScaffoldState extends State<MobileScaffold> {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            // first 4 boxes in grid
-            AspectRatio(aspectRatio: 2, child: MyBox()),
-
-            // list of previous days
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return const MyTile();
-                },
-              ),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      AspectRatio(aspectRatio: 2, child: MyBox()),
+                      AspectRatio(
+                        aspectRatio: 1,
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          children: [
+                            MyTile(),
+                            MyTile(),
+                            MyTile(),
+                            MyTile(),
+                          ],
+                        ),
+                      ),
+                      AspectRatio(aspectRatio: 2, child: MyTile()),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Image.asset(
+            'assets/human.png',
+            fit: BoxFit.fitHeight,
+            height: 50,
+          ),
+        ],
       ),
+      floatingActionButton: actionbutton,
     );
   }
 }

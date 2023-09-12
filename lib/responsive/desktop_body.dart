@@ -16,79 +16,85 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // open drawer
-            myDrawer,
-
-            // first half of page
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  // first 4 boxes in grid
-                  AspectRatio(
-                    aspectRatio: 4,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: GridView.builder(
-                        itemCount: 4,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4),
-                        itemBuilder: (context, index) {
-                          return MyBox();
-                        },
-                      ),
-                    ),
-                  ),
-
-                  // list of previous days
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 7,
-                      itemBuilder: (context, index) {
-                        return const MyTile();
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // second half of page
-            Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 400,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Color(0xFFB6C1C7),
-                      ),
-                    ),
-                  ),
-                  // list of stuff
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Color(0xFFF8F8F8),
+      body: TabBarView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // first half of page
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      // first 4 boxes in grid
+                      AspectRatio(
+                        aspectRatio: 4,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: GridView.builder(
+                            itemCount: 4,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 4),
+                            itemBuilder: (context, index) {
+                              return MyBox();
+                            },
+                          ),
                         ),
                       ),
-                    ),
+
+                      // list of previous days
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 7,
+                          itemBuilder: (context, index) {
+                            return MyTile();
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                // second half of page
+                Expanded(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 400,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Color(0xFFB6C1C7),
+                          ),
+                        ),
+                      ),
+                      // list of stuff
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color(0xFFF8F8F8),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Image.asset(
+            'assets/human.png',
+            fit: BoxFit.fitHeight,
+            height: 50,
+          ),
+        ],
       ),
     );
   }

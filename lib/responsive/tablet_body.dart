@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsivedashboard/constants.dart';
+import '../constants.dart';
 import '../util/my_box.dart';
 import '../util/my_tile.dart';
 
@@ -16,48 +16,43 @@ class _TabletScaffoldState extends State<TabletScaffold> {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // open drawer
-            AspectRatio(aspectRatio: 1 / 3, child: myDrawer),
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  // first 4 boxes in grid
-                  AspectRatio(
-                    aspectRatio: 4,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: GridView.builder(
-                        itemCount: 4,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4),
-                        itemBuilder: (context, index) {
-                          return MyBox();
-                        },
+      body: TabBarView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      AspectRatio(aspectRatio: 2, child: MyBox()),
+                      AspectRatio(
+                        aspectRatio: 4,
+                        child: GridView.builder(
+                          itemCount: 4,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4),
+                          itemBuilder: (context, index) {
+                            return MyTile();
+                          },
+                        ),
                       ),
-                    ),
+                      MyTile()
+                    ],
                   ),
-
-                  // list of previous days
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return const MyTile();
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Image.asset(
+            'assets/human.png',
+            fit: BoxFit.fitHeight,
+            height: 50,
+          ),
+        ],
       ),
     );
   }
