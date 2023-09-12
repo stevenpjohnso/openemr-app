@@ -6,7 +6,7 @@ class MyTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 150,
+        height: 100,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30), color: Color(0xE5ECF8FF)),
       ),

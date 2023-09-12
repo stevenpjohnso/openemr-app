@@ -89,10 +89,13 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
               ],
             ),
           ),
-          Image.asset(
-            'assets/human.png',
-            fit: BoxFit.fitHeight,
-            height: 50,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/human.png',
+              fit: BoxFit.fitHeight,
+              height: 50,
+            ),
           ),
         ],
       ),

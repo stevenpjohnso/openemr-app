@@ -15,42 +15,57 @@ var myAppBar = AppBar(
   ),
   title: TabBar(
       indicator: BoxDecoration(
-          color: Colors.blue[300], borderRadius: BorderRadius.circular(30)),
-      labelColor: Colors.white,
+          color: Colors.white, borderRadius: BorderRadius.circular(30)),
+      labelColor: Colors.black,
       unselectedLabelColor: Colors.black,
       tabs: [
-        Tab(icon: Icon(Icons.home_rounded)),
-        Tab(icon: Icon(Icons.newspaper_rounded)),
+        Tab(
+          icon: Image.asset(
+            'assets/ph_dna-thin.png',
+            fit: BoxFit.fitHeight,
+            height: 30,
+          ),
+        ),
+        Tab(
+          icon: Image.asset(
+            'assets/ph_file-thin.png',
+            fit: BoxFit.fitHeight,
+            height: 30,
+          ),
+        ),
       ]),
   centerTitle: true,
   actions: [
     Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: Colors.white,
-            width: 2,
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.white,
+              width: 2,
+            ),
           ),
-        ),
-        child: Icon(
-          Icons.person,
-          size: 30,
-        ),
-      ),
-    )
+          child: Image.asset(
+            'assets/ph_user-thin.png',
+            fit: BoxFit.fitHeight,
+            height: 30,
+          ),
+        ))
   ],
 );
 var actionbutton = FloatingActionButton.extended(
-  onPressed: () {},
-  backgroundColor: Colors.white,
-  foregroundColor: Colors.black,
-  elevation: 0,
-  hoverElevation: 0,
-  highlightElevation: 0,
-  label: const Text('Search'),
-  icon: const Icon(Icons.search),
-);
+    onPressed: () {},
+    backgroundColor: Colors.white,
+    foregroundColor: Colors.black,
+    elevation: 0,
+    hoverElevation: 0,
+    highlightElevation: 0,
+    label: const Text('Search'),
+    icon: Image.asset(
+      'assets/iconamoon_search-thin.png',
+      fit: BoxFit.fitHeight,
+      height: 30,
+    ));
