@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../util/my_box.dart';
-import '../util/my_tile.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
@@ -18,85 +16,14 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
       appBar: myAppBar,
       body: TabBarView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // first half of page
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      // first 4 boxes in grid
-                      AspectRatio(
-                        aspectRatio: 4,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: GridView.builder(
-                            itemCount: 4,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 4),
-                            itemBuilder: (context, index) {
-                              return MyBox();
-                            },
-                          ),
-                        ),
-                      ),
+          //p1-c1
+          carousel,
+          //p1-c2
 
-                      // list of previous days
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: 7,
-                          itemBuilder: (context, index) {
-                            return MyTile();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // second half of page
-                Expanded(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 400,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color(0xFFB6C1C7),
-                          ),
-                        ),
-                      ),
-                      // list of stuff
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Color(0xFFF8F8F8),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/human.png',
-              fit: BoxFit.fitHeight,
-              height: 50,
-            ),
-          ),
+          //p2
+          Container(
+            child: Center(child: Text('reports')),
+          )
         ],
       ),
     );

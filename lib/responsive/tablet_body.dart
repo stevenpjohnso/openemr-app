@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../util/my_box.dart';
-import '../util/my_tile.dart';
 
 class TabletScaffold extends StatefulWidget {
   const TabletScaffold({Key? key}) : super(key: key);
@@ -18,43 +16,10 @@ class _TabletScaffoldState extends State<TabletScaffold> {
       appBar: myAppBar,
       body: TabBarView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      AspectRatio(aspectRatio: 2, child: MyBox()),
-                      AspectRatio(
-                        aspectRatio: 4,
-                        child: GridView.builder(
-                          itemCount: 4,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4),
-                          itemBuilder: (context, index) {
-                            return MyTile();
-                          },
-                        ),
-                      ),
-                      MyTile()
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/human.png',
-              fit: BoxFit.fitHeight,
-              height: 50,
-            ),
-          ),
+          //p1
+          carousel,
+          //p2
+          Container()
         ],
       ),
     );
