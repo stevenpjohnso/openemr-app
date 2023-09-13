@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-var defaultBackgroundColor = Color(0xFFE0E9EF);
-var appBarColor = Color(0xFFE0E9EF);
+var defaultBackgroundColor = const Color(0xFFE0E9EF);
+var appBarColor = const Color(0xFFE0E9EF);
 var myAppBar = AppBar(
   elevation: 0,
   backgroundColor: appBarColor,
@@ -63,10 +63,10 @@ var carousel = ListView(
       items: [
         //1st Image of Slider
         Container(
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/0.png'),
               fit: BoxFit.cover,
             ),
@@ -75,10 +75,10 @@ var carousel = ListView(
 
         //2nd Image of Slider
         Container(
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/0.png'),
               fit: BoxFit.cover,
             ),
@@ -87,10 +87,10 @@ var carousel = ListView(
 
         //3rd Image of Slider
         Container(
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/0.png'),
               fit: BoxFit.cover,
             ),
@@ -99,10 +99,10 @@ var carousel = ListView(
 
         //4th Image of Slider
         Container(
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/0.png'),
               fit: BoxFit.cover,
             ),
@@ -111,10 +111,10 @@ var carousel = ListView(
 
         //5th Image of Slider
         Container(
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/0.png'),
               fit: BoxFit.cover,
             ),
@@ -130,7 +130,7 @@ var carousel = ListView(
         aspectRatio: 16 / 9,
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
         viewportFraction: 0.8,
       ),
     ),

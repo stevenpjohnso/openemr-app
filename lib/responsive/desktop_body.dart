@@ -21,9 +21,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           //p1-c2
 
           //p2
-          Container(
-            child: Center(child: Text('reports')),
-          )
+          const Center(child: Text('reports')),
         ],
       ),
     );

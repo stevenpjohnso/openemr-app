@@ -3,9 +3,18 @@ import 'responsive/mobile_body.dart';
 import 'responsive/tablet_body.dart';
 import 'responsive/desktop_body.dart';
 import 'responsive/responsive_layout.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+        supportedLocales: const [Locale('en', 'US'), Locale('es', 'US')],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en', 'US'),
+        child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,12 +25,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: DefaultTabController(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      home: const DefaultTabController(
         length: 2,
         child: ResponsiveLayout(
-          mobileBody: const MobileScaffold(),
-          tabletBody: const TabletScaffold(),
-          desktopBody: const DesktopScaffold(),
+          mobileBody: MobileScaffold(),
+          tabletBody: TabletScaffold(),
+          desktopBody: DesktopScaffold(),
         ),
       ),
     );
