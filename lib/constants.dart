@@ -45,7 +45,7 @@ var myAppBar = AppBar(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.white,
+              color: Colors.blueAccent,
               width: 2,
             ),
           ),
@@ -66,9 +66,10 @@ var carousel = ListView(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: const DecorationImage(
-              image: AssetImage('assets/0.png'),
-              fit: BoxFit.cover,
+            gradient: const LinearGradient(
+              begin: Alignment(0.00, -1.00),
+              end: Alignment(0, 1),
+              colors: [Color(0xB238B9FF), Color(0xFF38B9FF)],
             ),
           ),
         ),
@@ -78,10 +79,7 @@ var carousel = ListView(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: const DecorationImage(
-              image: AssetImage('assets/0.png'),
-              fit: BoxFit.cover,
-            ),
+            color: const Color(0xE5ECF8FF),
           ),
         ),
 
@@ -90,10 +88,7 @@ var carousel = ListView(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: const DecorationImage(
-              image: AssetImage('assets/0.png'),
-              fit: BoxFit.cover,
-            ),
+            color: const Color(0xE5ECF8FF),
           ),
         ),
 
@@ -102,10 +97,7 @@ var carousel = ListView(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: const DecorationImage(
-              image: AssetImage('assets/0.png'),
-              fit: BoxFit.cover,
-            ),
+            color: const Color(0xE5ECF8FF),
           ),
         ),
 
@@ -114,10 +106,7 @@ var carousel = ListView(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
-            image: const DecorationImage(
-              image: AssetImage('assets/0.png'),
-              fit: BoxFit.cover,
-            ),
+            color: const Color(0xE5ECF8FF),
           ),
         ),
       ],
@@ -126,7 +115,7 @@ var carousel = ListView(
       options: CarouselOptions(
         height: 180.0,
         enlargeCenterPage: true,
-        autoPlay: true,
+        autoPlay: false,
         aspectRatio: 16 / 9,
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
