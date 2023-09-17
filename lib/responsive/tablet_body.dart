@@ -11,16 +11,19 @@ class TabletScaffold extends StatefulWidget {
 class _TabletScaffoldState extends State<TabletScaffold> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: defaultBackgroundColor,
-      appBar: myAppBar,
-      body: TabBarView(
-        children: [
-          //p1
-          carousel,
-          //p2
-          Container()
-        ],
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: defaultBackgroundColor,
+        appBar: myAppBar,
+        body: TabBarView(
+          children: [
+            //p1
+            carousel,
+            //p2
+            Container()
+          ],
+        ),
       ),
     );
   }

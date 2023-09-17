@@ -136,5 +136,5 @@ var actionbutton = FloatingActionButton.extended(
     icon: Image.asset(
       'assets/iconamoon_search-thin.png',
       fit: BoxFit.fitHeight,
-      height: 30,
+      height: 35,
     ));

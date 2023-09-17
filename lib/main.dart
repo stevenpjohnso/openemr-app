@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'responsive/mobile_body.dart';
-import 'responsive/tablet_body.dart';
-import 'responsive/desktop_body.dart';
-import 'responsive/responsive_layout.dart';
+import 'package:openemr/login.dart';
+import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'util/my_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -22,20 +22,45 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      home: const DefaultTabController(
-        length: 2,
-        child: ResponsiveLayout(
-          mobileBody: MobileScaffold(),
-          tabletBody: TabletScaffold(),
-          desktopBody: DesktopScaffold(),
-        ),
+    return ChangeNotifierProvider(
+      create: (_) => MyTheme(),
+      child: Consumer<MyTheme>(
+        builder: (context, MyTheme themeNotifier, child) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              theme: themeNotifier.isDark
+                  ? ThemeData(
+                      visualDensity: VisualDensity.adaptivePlatformDensity,
+                      brightness: Brightness.dark,
+                      primaryColor: Colors.teal,
+                      primarySwatch: Colors.teal)
+                  : ThemeData(
+                      visualDensity: VisualDensity.adaptivePlatformDensity,
+                      brightness: Brightness.light,
+                      primaryColor: Colors.blue,
+                      primarySwatch: Colors.blue),
+              home: const LoginPage());
+        },
       ),
     );
   }
+}
+
+class ThemeClass {
+  static ThemeData lightTheme = ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+      colorScheme: const ColorScheme.light(),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.blue,
+      ));
+
+  static ThemeData darkTheme = ThemeData(
+      scaffoldBackgroundColor: Colors.black,
+      colorScheme: const ColorScheme.dark(),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.teal,
+      ));
 }
