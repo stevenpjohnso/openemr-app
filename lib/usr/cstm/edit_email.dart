@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:openemr/util/constants.dart';
 import '../user_data.dart';
-import 'package:openemr/util/appbar_widget.dart';
 import 'package:email_validator/email_validator.dart';
 
 // This class handles the Page to edit the Email Section of the User Profile.
@@ -31,7 +31,11 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: AppBar(
+          leading: backButton,
+          backgroundColor: appBarColor,
+          elevation: appBarElevation,
+        ),
         body: Form(
           key: _formKey,
           child: Column(

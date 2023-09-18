@@ -3,60 +3,82 @@ import 'package:flutter/material.dart';
 
 var defaultBackgroundColor = const Color(0xFFE0E9EF);
 var appBarColor = const Color(0xFFE0E9EF);
-var myAppBar = AppBar(
-  elevation: 0,
-  backgroundColor: appBarColor,
-  leading: Padding(
+final appBarTitle = TabBar(
+    indicator: BoxDecoration(
+        color: Colors.white, borderRadius: BorderRadius.circular(30)),
+    labelColor: Colors.black,
+    unselectedLabelColor: Colors.black,
+    tabs: [
+      Tab(
+        icon: Image.asset(
+          'assets/ph_dna-thin.png',
+          fit: BoxFit.fitHeight,
+          height: 30,
+        ),
+      ),
+      Tab(
+        icon: Image.asset(
+          'assets/ph_file-thin.png',
+          fit: BoxFit.fitHeight,
+          height: 30,
+        ),
+      ),
+    ]);
+const appBarElevation = 0.0;
+final logo = Builder(builder: (context) {
+  return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Image.asset(
-      'assets/logo.png',
-      fit: BoxFit.fitHeight,
-      height: 50,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/homepage');
+      },
+      child: Image.asset(
+        'assets/logo.png',
+        fit: BoxFit.fitHeight,
+        height: 50,
+      ),
     ),
-  ),
-  title: TabBar(
-      indicator: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(30)),
-      labelColor: Colors.black,
-      unselectedLabelColor: Colors.black,
-      tabs: [
-        Tab(
-          icon: Image.asset(
-            'assets/ph_dna-thin.png',
-            fit: BoxFit.fitHeight,
-            height: 30,
-          ),
+  );
+});
+final user = Builder(builder: (context) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: Colors.blueAccent,
+          width: 2,
         ),
-        Tab(
-          icon: Image.asset(
-            'assets/ph_file-thin.png',
-            fit: BoxFit.fitHeight,
-            height: 30,
-          ),
+      ),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/profilepage');
+        },
+        child: Image.asset(
+          'assets/ph_user-thin.png',
+          fit: BoxFit.fitHeight,
+          height: 30,
         ),
-      ]),
-  centerTitle: true,
-  actions: [
-    Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.blueAccent,
-              width: 2,
-            ),
-          ),
-          child: Image.asset(
-            'assets/ph_user-thin.png',
-            fit: BoxFit.fitHeight,
-            height: 30,
-          ),
-        ))
-  ],
-);
+      ),
+    ),
+  );
+});
+var myAppBar = Builder(builder: (context) {
+  return AppBar(
+    elevation: 0,
+    backgroundColor: appBarColor,
+    leading: logo,
+    title: appBarTitle,
+    centerTitle: true,
+    actions: [
+      user,
+    ],
+  );
+});
+const backButton = BackButton(color: Colors.black);
 var carousel = ListView(
   children: [
     CarouselSlider(

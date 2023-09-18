@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:openemr/login.dart';
+import 'package:get/get.dart';
+import 'package:openemr/app/modules/login/login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'app/modules/home/home_binding.dart';
+import 'app/routes/app_pages.dart';
 import 'util/my_theme.dart';
 
 void main() async {
@@ -26,23 +29,26 @@ class MyApp extends StatelessWidget {
       create: (_) => MyTheme(),
       child: Consumer<MyTheme>(
         builder: (context, MyTheme themeNotifier, child) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: themeNotifier.isDark
-                  ? ThemeData(
-                      visualDensity: VisualDensity.adaptivePlatformDensity,
-                      brightness: Brightness.dark,
-                      primaryColor: Colors.teal,
-                      primarySwatch: Colors.teal)
-                  : ThemeData(
-                      visualDensity: VisualDensity.adaptivePlatformDensity,
-                      brightness: Brightness.light,
-                      primaryColor: Colors.blue,
-                      primarySwatch: Colors.blue),
-              home: const LoginPage());
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: themeNotifier.isDark
+                ? ThemeData(
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    brightness: Brightness.dark,
+                    primaryColor: Colors.teal,
+                    primarySwatch: Colors.teal)
+                : ThemeData(
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    brightness: Brightness.light,
+                    primaryColor: Colors.blue,
+                    primarySwatch: Colors.blue),
+            initialBinding: HomeBinding(),
+            home: const LoginPage(),
+            getPages: AppPages.pages,
+          );
         },
       ),
     );

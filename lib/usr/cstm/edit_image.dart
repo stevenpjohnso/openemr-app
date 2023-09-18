@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../../util/constants.dart';
 import '../user_data.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:openemr/util/appbar_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditImagePage extends StatefulWidget {
@@ -19,7 +19,11 @@ class _EditImagePageState extends State<EditImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBar(
+        leading: backButton,
+        backgroundColor: appBarColor,
+        elevation: appBarElevation,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:openemr/util/my_box.dart';
 import 'package:openemr/util/my_tile.dart';
-import '../constants.dart';
+import '../util/constants.dart';
 
 class MobileScaffold extends StatefulWidget {
   const MobileScaffold({Key? key}) : super(key: key);
@@ -19,7 +19,11 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       length: 2,
       child: Scaffold(
           backgroundColor: defaultBackgroundColor,
-          appBar: myAppBar,
+          appBar: AppBar(
+            title: appBarTitle,
+            backgroundColor: appBarColor,
+            elevation: appBarElevation,
+          ),
           body: TabBarView(
             children: <Widget>[
               //p1

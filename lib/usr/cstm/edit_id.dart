@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../util/constants.dart';
 import '../user_data.dart';
-import 'package:openemr/util/appbar_widget.dart';
 
 // This class handles the Page to edit the ID Section of the User Profile.
 class EditIDFormPage extends StatefulWidget {
@@ -30,7 +30,11 @@ class EditIDFormPageState extends State<EditIDFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: AppBar(
+          leading: backButton,
+          backgroundColor: appBarColor,
+          elevation: appBarElevation,
+        ),
         body: Form(
           key: _formKey,
           child: Column(

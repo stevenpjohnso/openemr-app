@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
+import '../../util/constants.dart';
 import '../user_data.dart';
-import 'package:openemr/util/appbar_widget.dart';
 
 // This class handles the Page to edit the Name Section of the User Profile.
 class EditNameFormPage extends StatefulWidget {
@@ -32,7 +32,11 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: AppBar(
+          leading: backButton,
+          backgroundColor: appBarColor,
+          elevation: appBarElevation,
+        ),
         body: Form(
           key: _formKey,
           child: Column(

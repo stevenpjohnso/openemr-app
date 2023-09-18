@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../util/theme_check.dart';
-import 'usr/cstm/edit_email.dart';
-import 'usr/cstm/edit_id.dart';
-import 'usr/cstm/edit_image.dart';
-import 'usr/cstm/edit_name.dart';
-import 'usr/cstm/edit_phone.dart';
-import 'usr/user.dart';
-import 'usr/user_data.dart';
-import 'util/display_image_widget.dart';
+import '../../../../util/theme_check.dart';
+import '../../../usr/cstm/edit_email.dart';
+import '../../../usr/cstm/edit_id.dart';
+import '../../../usr/cstm/edit_image.dart';
+import '../../../usr/cstm/edit_name.dart';
+import '../../../usr/cstm/edit_phone.dart';
+import '../../../usr/user.dart';
+import '../../../usr/user_data.dart';
+import '../../../util/display_image_widget.dart';
 
 // This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
 class ProfilePage extends StatefulWidget {

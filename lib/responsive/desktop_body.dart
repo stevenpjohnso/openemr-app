@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:openemr/util/my_box.dart';
 import 'package:openemr/util/my_tile.dart';
-import '../constants.dart';
+import '../util/constants.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
@@ -19,13 +19,30 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
       length: 2,
       child: Scaffold(
         backgroundColor: defaultBackgroundColor,
-        appBar: myAppBar,
+        appBar: AppBar(
+          leading: logo,
+          title: appBarTitle,
+          centerTitle: true,
+          backgroundColor: appBarColor,
+          elevation: appBarElevation,
+          actions: [
+            user,
+          ],
+        ),
         body: TabBarView(
           children: [
             //p1-c1
             ListView(children: [
-              SizedBox(
-                  height: height / 6, width: width / 4, child: const MyBox()),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                      height: height / 6,
+                      width: width / 5,
+                      child: const MyBox()),
+                ),
+              ),
               SizedBox(
                   height: height / 6, width: width / 4, child: const MyTile()),
             ]),
