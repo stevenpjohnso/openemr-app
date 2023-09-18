@@ -35,8 +35,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  image_picker: ^1.0.4
+  path_provider: ^2.1.1
   provider: ^6.0.5
   shared_preferences: ^2.2.1
+  string_validator: ^1.0.0
 
 dev_dependencies:
 

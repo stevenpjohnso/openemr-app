@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:connect/usr/user_data.dart';
-import 'package:connect/util/appbar_widget.dart';
+import '../user_data.dart';
+import 'package:openemr/util/appbar_widget.dart';
 
 // This class handles the Page to edit the ID Section of the User Profile.
 class EditIDFormPage extends StatefulWidget {

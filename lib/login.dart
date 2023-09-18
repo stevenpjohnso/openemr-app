@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isLoading = false;
+  bool isVisible = false;
 
   // sign user in method
   Future<void> signUserIn() async {
@@ -90,145 +91,157 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
 
-              // logo
-              Image.asset(
-                'assets/logo.png',
-                height: 100,
-              ),
+                // logo
+                Image.asset(
+                  'assets/logo.png',
+                  height: 100,
+                ),
 
-              const SizedBox(height: 50),
+                const SizedBox(height: 50),
 
-              // welcome back, you've been missed!
-              Text(
-                'Welcome!',
-                style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 24,
-                    fontWeight: FontWeight.w300),
-              ),
+                // welcome back, you've been missed!
+                Text(
+                  'Welcome!',
+                  style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300),
+                ),
 
-              const SizedBox(height: 25),
+                const SizedBox(height: 25),
 
-              // email textfield
-              MyTextField(
-                controller: emailController,
-                hintText: 'Email',
-                obscureText: false,
-              ),
+                // email textfield
+                MyTextField(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
 
-              // const SizedBox(height: 10),
+                Visibility(
+                  visible: isVisible,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
 
-              // // password textfield
-              // MyTextField(
-              //   controller: passwordController,
-              //   hintText: 'Password',
-              //   obscureText: true,
-              // ),
-              // Loading indicator
-              isLoading
-                  ? const CircularProgressIndicator()
-                  : const SizedBox.shrink(), // Hide if not loading
-              const SizedBox(height: 10),
+                      // password textfield
+                      MyTextField(
+                        controller: passwordController,
+                        hintText: 'Password',
+                        obscureText: true,
+                      ),
+                    ],
+                  ),
+                ),
+                // Loading indicator
+                isLoading
+                    ? const CircularProgressIndicator()
+                    : const SizedBox.shrink(), // Hide if not loading
+                const SizedBox(height: 10),
 
-              // forgot password?
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.end,
-              //     children: [
-              //       Text(
-              //         'Forgot Password?',
-              //         style: TextStyle(color: Colors.grey[600]),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+                // forgot password?
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       Text(
+                //         'Forgot Password?',
+                //         style: TextStyle(color: Colors.grey[600]),
+                //       ),
+                //     ],
+                //   ),
+                // ),
 
-              const SizedBox(height: 25),
+                const SizedBox(height: 25),
 
-              // sign in button
-              MyButton(
-                // onTap: signUserIn,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                },
-              ),
+                // sign in button
+                MyButton(
+                  // onTap: signUserIn,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                    setState(() {
+                      isVisible = true;
+                    });
+                  },
+                ),
 
-              const SizedBox(height: 50),
+                const SizedBox(height: 50),
 
-              // or continue with
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
+                // or continue with
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          'Or continue with',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 50),
+
+                // google + apple sign in buttons
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
+                    // google button
+                    SquareTile(imagePath: 'assets/img/G.png'),
+
+                    SizedBox(width: 25),
+
+                    // apple button
+                    SquareTile(imagePath: 'assets/img/A.png')
                   ],
                 ),
-              ),
 
-              const SizedBox(height: 50),
+                const SizedBox(height: 50),
 
-              // google + apple sign in buttons
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // google button
-                  SquareTile(imagePath: 'assets/img/G.png'),
-
-                  SizedBox(width: 25),
-
-                  // apple button
-                  SquareTile(imagePath: 'assets/img/A.png')
-                ],
-              ),
-
-              const SizedBox(height: 50),
-
-              // not a member? register now
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       'Not a member?',
-              //       style: TextStyle(color: Colors.grey[700]),
-              //     ),
-              //     const SizedBox(width: 4),
-              //     const Text(
-              //       'Register now',
-              //       style: TextStyle(
-              //         color: Colors.blue,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // )
-            ],
+                // not a member? register now
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Text(
+                //       'Not a member?',
+                //       style: TextStyle(color: Colors.grey[700]),
+                //     ),
+                //     const SizedBox(width: 4),
+                //     const Text(
+                //       'Register now',
+                //       style: TextStyle(
+                //         color: Colors.blue,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ],
+                // )
+              ],
+            ),
           ),
         ),
       ),

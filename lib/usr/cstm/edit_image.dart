@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:connect/usr/user_data.dart';
+import '../user_data.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
-import 'package:connect/util/appbar_widget.dart';
+import 'package:openemr/util/appbar_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditImagePage extends StatefulWidget {
@@ -46,7 +45,7 @@ class _EditImagePageState extends State<EditImagePage> {
                       if (image == null) return;
 
                       final location = await getApplicationDocumentsDirectory();
-                      final name = basename(image.path);
+                      final name = (image.path);
                       final imageFile = File('${location.path}/$name');
                       final newImage =
                           await File(image.path).copy(imageFile.path);

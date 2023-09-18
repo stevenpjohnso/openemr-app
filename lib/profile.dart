@@ -1,15 +1,15 @@
 import 'dart:async';
-// import 'package:connect/util/display_image_widget.dart';
-// import 'package:connect/util/edit_email.dart';
-// import 'package:connect/util/edit_image.dart';
-// import 'package:connect/util/edit_name.dart';
-// import 'package:connect/util/edit_phone.dart';
-// import 'package:connect/util/edit_id.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../util/theme_check.dart';
+import 'usr/cstm/edit_email.dart';
+import 'usr/cstm/edit_id.dart';
+import 'usr/cstm/edit_image.dart';
+import 'usr/cstm/edit_name.dart';
+import 'usr/cstm/edit_phone.dart';
 import 'usr/user.dart';
-// import 'usr/user_data.dart';
+import 'usr/user_data.dart';
+import 'util/display_image_widget.dart';
 
 // This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
 class ProfilePage extends StatefulWidget {
@@ -23,9 +23,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    // final user = UserData.myUser;
-    return Consumer<ModelTheme>(
-        builder: (context, ModelTheme themeNotifier, child) {
+    final user = UserData.myUser;
+    return Consumer<MyTheme>(builder: (context, MyTheme themeNotifier, child) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Column(children: [
@@ -39,21 +38,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.w700,
                       ),
                     ))),
-            // InkWell(
-            //     onTap: () {
-            //       navigateIDPage(const EditImagePage());
-            //     },
-            //     child: DisplayImage(
-            //       imagePath: user.image,
-            //       onPressed: () {},
-            //     )),
-            // buildUserInfoDisplay(user.name, 'Name', const EditNameFormPage()),
-            // buildUserInfoDisplay(
-            //     user.phone, 'Phone', const EditPhoneFormPage()),
-            // buildUserInfoDisplay(
-            //     user.email, 'Email', const EditEmailFormPage()),
-            // buildUserInfoDisplay(user.id, 'ID', const EditIDFormPage()),
-            // // buildAbout(user),
+            InkWell(
+                onTap: () {
+                  navigateIDPage(const EditImagePage());
+                },
+                child: DisplayImage(
+                  imagePath: user.image,
+                  onPressed: () {},
+                )),
+            buildUserInfoDisplay(user.name, 'Name', const EditNameFormPage()),
+            buildUserInfoDisplay(
+                user.phone, 'Phone', const EditPhoneFormPage()),
+            buildUserInfoDisplay(
+                user.email, 'Email', const EditEmailFormPage()),
+            buildUserInfoDisplay(user.id, 'ID', const EditIDFormPage()),
+            buildAbout(user),
             const SizedBox(
               height: 20,
             ),
