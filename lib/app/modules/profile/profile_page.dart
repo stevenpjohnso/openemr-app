@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../../../util/theme_check.dart';
+import 'package:openemr/theme/theme_service.dart';
 import '../../../usr/cstm/edit_email.dart';
 import '../../../usr/cstm/edit_id.dart';
 import '../../../usr/cstm/edit_image.dart';
@@ -13,7 +12,7 @@ import '../../../util/display_image_widget.dart';
 
 // This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -24,51 +23,45 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final user = UserData.myUser;
-    return Consumer<MyTheme>(builder: (context, MyTheme themeNotifier, child) {
-      return Scaffold(
-        body: SingleChildScrollView(
-          child: Column(children: [
-            const Center(
-                child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Text(
-                      'Edit Profile',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ))),
-            InkWell(
-                onTap: () {
-                  navigateIDPage(const EditImagePage());
-                },
-                child: DisplayImage(
-                  imagePath: user.image,
-                  onPressed: () {},
-                )),
-            buildUserInfoDisplay(user.name, 'Name', const EditNameFormPage()),
-            buildUserInfoDisplay(
-                user.phone, 'Phone', const EditPhoneFormPage()),
-            buildUserInfoDisplay(
-                user.email, 'Email', const EditEmailFormPage()),
-            buildUserInfoDisplay(user.id, 'ID', const EditIDFormPage()),
-            buildAbout(user),
-            const SizedBox(
-              height: 20,
-            ),
-            IconButton(
-                icon: Icon(themeNotifier.isDark
-                    ? Icons.nightlight_round
-                    : Icons.wb_sunny),
-                onPressed: () {
-                  themeNotifier.isDark
-                      ? themeNotifier.isDark = false
-                      : themeNotifier.isDark = true;
-                })
-          ]),
-        ),
-      );
-    });
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          const Center(
+              child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    'Edit Profile',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ))),
+          InkWell(
+              onTap: () {
+                navigateIDPage(const EditImagePage());
+              },
+              child: DisplayImage(
+                imagePath: user.image,
+                onPressed: () {},
+              )),
+          buildUserInfoDisplay(user.name, 'Name', const EditNameFormPage()),
+          buildUserInfoDisplay(user.phone, 'Phone', const EditPhoneFormPage()),
+          buildUserInfoDisplay(user.email, 'Email', const EditEmailFormPage()),
+          buildUserInfoDisplay(user.id, 'ID', const EditIDFormPage()),
+          buildAbout(user),
+          const SizedBox(
+            height: 20,
+          ),
+          IconButton(
+              icon: Icon(ThemeService().isSavedDarkMode()
+                  ? Icons.nightlight_round
+                  : Icons.wb_sunny),
+              onPressed: () {
+                ThemeService().changeThemeMode();
+              })
+        ]),
+      ),
+    );
   }
 
   // Widget builds the display item with the proper formatting to display the user's info

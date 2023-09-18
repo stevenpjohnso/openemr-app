@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 var defaultBackgroundColor = const Color(0xFFE0E9EF);
 var appBarColor = const Color(0xFFE0E9EF);
@@ -28,9 +29,9 @@ const appBarElevation = 0.0;
 final logo = Builder(builder: (context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/homepage');
+    child: TextButton(
+      onPressed: () {
+        Get.toNamed('/home');
       },
       child: Image.asset(
         'assets/logo.png',
@@ -53,9 +54,9 @@ final user = Builder(builder: (context) {
           width: 2,
         ),
       ),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, '/profilepage');
+      child: TextButton(
+        onPressed: () {
+          Get.toNamed('/profile');
         },
         child: Image.asset(
           'assets/ph_user-thin.png',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:openemr/util/my_box.dart';
-import 'package:openemr/util/my_tile.dart';
 import '../util/constants.dart';
 
 class DesktopScaffold extends StatefulWidget {
@@ -43,11 +42,10 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       child: const MyBox()),
                 ),
               ),
-              SizedBox(
-                  height: height / 6, width: width / 4, child: const MyTile()),
             ]),
             //p1-c2
-
+            // SizedBox(
+            //     height: height / 6, width: width / 5, child: const MyTile()),
             //p2
             Stack(
               children: [

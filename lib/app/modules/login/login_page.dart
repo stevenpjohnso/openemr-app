@@ -1,4 +1,5 @@
-import '../home/home_page.dart';
+import 'package:get/get.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../../util/my_button.dart';
@@ -107,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 // welcome back, you've been missed!
                 Text(
-                  'Welcome!',
+                  'hello'.tr,
                   style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 24,
@@ -164,10 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                 MyButton(
                   // onTap: signUserIn,
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
+                    Get.toNamed('/home');
                     setState(() {
                       isVisible = true;
                     });

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'user.dart';
 
 class UserData {
   static late SharedPreferences _preferences;
