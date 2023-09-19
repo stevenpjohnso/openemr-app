@@ -23,6 +23,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
             title: appBarTitle,
             backgroundColor: appBarColor,
             elevation: appBarElevation,
+            actions: [user],
           ),
           body: TabBarView(
             children: <Widget>[

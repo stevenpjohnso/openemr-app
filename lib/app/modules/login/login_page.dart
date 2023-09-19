@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../util/my_button.dart';
 import '../../../../util/my_textfield.dart';
 import '../../../../util/square_tile.dart';
@@ -205,16 +206,20 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 50),
 
                 // google + apple sign in buttons
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(imagePath: 'assets/img/G.png'),
+                    GestureDetector(
+                        onTap: () {
+                          signInWithGoogle();
+                        },
+                        child: const SquareTile(imagePath: 'assets/img/G.png')),
 
-                    SizedBox(width: 25),
+                    const SizedBox(width: 25),
 
                     // apple button
-                    SquareTile(imagePath: 'assets/img/A.png')
+                    const SquareTile(imagePath: 'assets/img/A.png')
                   ],
                 ),
 
@@ -244,5 +249,18 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+}
+
+signInWithGoogle() async {
+  GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+  UserCredential userCredential =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+  if (userCredential.user != null) {
+    Get.toNamed('/home');
   }
 }

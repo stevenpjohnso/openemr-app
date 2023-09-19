@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "716960493744",
+    "project_id": "openemr-app",
+    "storage_bucket": "openemr-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716960493744:android:0ee479b884cb703ea38b75",
+        "android_client_info": {
+          "package_name": "com.app.openemr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716960493744-6idbn56ccat24uqia7sbnp9263jfuktt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.openemr",
+            "certificate_hash": "b1b82286c8cf908548fc47c421f313932ec17a3e"
+          }
+        },
+        {
+          "client_id": "716960493744-tguq43egindflul924pks8ab4i6mefg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFWOdA_U9OUM1nPY-dh2IONgXAWK8Zzxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716960493744-tguq43egindflul924pks8ab4i6mefg4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "716960493744-97arn43d29pdaq4cevhh70qfmid1p05s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.openemr.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

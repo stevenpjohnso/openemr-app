@@ -29,12 +29,19 @@ class _TabletScaffoldState extends State<TabletScaffold> {
             //p1
             ListView(children: [
               SizedBox(height: 200, child: carousel),
-              SizedBox(
-                  height: height / 2,
-                  child: const Divider(
-                    color: Colors.black,
-                    thickness: 3,
-                  ))
+              AspectRatio(
+                aspectRatio: 2,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                        height: height / 2,
+                        child: const Divider(
+                          color: Colors.black,
+                          thickness: 3,
+                        )),
+                  ],
+                ),
+              )
             ]),
             //p2
             ListView(

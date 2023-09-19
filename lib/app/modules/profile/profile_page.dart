@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:openemr/theme/theme_service.dart';
 import '../../../usr/cstm/edit_email.dart';
 import '../../../usr/cstm/edit_id.dart';
@@ -58,7 +60,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   : Icons.wb_sunny),
               onPressed: () {
                 ThemeService().changeThemeMode();
-              })
+              }),
+          IconButton(
+              onPressed: () async {
+                await GoogleSignIn().signOut();
+                FirebaseAuth.instance.signOut();
+              },
+              icon: const Icon(Icons.logout)),
         ]),
       ),
     );
@@ -109,32 +117,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ]))
             ],
           ));
-
-  // Widget builds the About Me Section
-  Widget buildAbout(User user) => Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // const Text(
-          //   'Tell Us About Yourself',
-          //   style: TextStyle(
-          //     fontSize: 15,
-          //     fontWeight: FontWeight.w500,
-          //     color: Colors.grey,
-          //   ),
-          // ),
-          const SizedBox(height: 1),
-          Row(children: [
-            Expanded(
-                child: TextButton(
-                    onPressed: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                    ))),
-          ])
-        ],
-      ));
 
   // Refrshes the Page after updating user info.
   FutureOr onGoBack(dynamic value) {
