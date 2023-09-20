@@ -3,12 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:openemr/theme/theme_service.dart';
+import '../../../util/constants.dart';
 import '../../../usr/cstm/edit_email.dart';
 import '../../../usr/cstm/edit_id.dart';
 import '../../../usr/cstm/edit_image.dart';
 import '../../../usr/cstm/edit_name.dart';
 import '../../../usr/cstm/edit_phone.dart';
-import '../../../usr/user.dart';
 import '../../../usr/user_data.dart';
 import '../../../util/display_image_widget.dart';
 
@@ -26,6 +26,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final user = UserData.myUser;
     return Scaffold(
+      appBar: AppBar(
+        leading: backButton,
+        backgroundColor: appBarColor,
+        elevation: appBarElevation,
+      ),
       body: SingleChildScrollView(
         child: Column(children: [
           const Center(
@@ -50,7 +55,6 @@ class _ProfilePageState extends State<ProfilePage> {
           buildUserInfoDisplay(user.phone, 'Phone', const EditPhoneFormPage()),
           buildUserInfoDisplay(user.email, 'Email', const EditEmailFormPage()),
           buildUserInfoDisplay(user.id, 'ID', const EditIDFormPage()),
-          buildAbout(user),
           const SizedBox(
             height: 20,
           ),

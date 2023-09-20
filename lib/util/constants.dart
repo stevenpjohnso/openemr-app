@@ -25,61 +25,59 @@ final appBarTitle = TabBar(
         ),
       ),
     ]);
+
 const appBarElevation = 0.0;
-final logo = Builder(builder: (context) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
+
+final logo = TextButton(
+  onPressed: () {
+    Get.toNamed('/home');
+  },
+  child: Image.asset(
+    'assets/logo.png',
+    fit: BoxFit.contain,
+    height: 100,
+    width: 100,
+  ),
+);
+
+final user = Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Container(
+    width: 60,
+    height: 60,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(
+        color: Colors.blueAccent,
+        width: 2,
+      ),
+    ),
     child: TextButton(
       onPressed: () {
-        Get.toNamed('/home');
+        Get.toNamed('/profile');
       },
       child: Image.asset(
-        'assets/logo.png',
+        'assets/ph_user-thin.png',
         fit: BoxFit.fitHeight,
-        height: 50,
+        height: 30,
       ),
     ),
-  );
-});
-final user = Builder(builder: (context) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      width: 60,
-      height: 60,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Colors.blueAccent,
-          width: 2,
-        ),
-      ),
-      child: TextButton(
-        onPressed: () {
-          Get.toNamed('/profile');
-        },
-        child: Image.asset(
-          'assets/ph_user-thin.png',
-          fit: BoxFit.fitHeight,
-          height: 30,
-        ),
-      ),
-    ),
-  );
-});
-var myAppBar = Builder(builder: (context) {
-  return AppBar(
-    elevation: 0,
-    backgroundColor: appBarColor,
-    leading: logo,
-    title: appBarTitle,
-    centerTitle: true,
-    actions: [
-      user,
-    ],
-  );
-});
+  ),
+);
+
+var myAppBar = AppBar(
+  elevation: 0,
+  backgroundColor: appBarColor,
+  leading: logo,
+  title: appBarTitle,
+  centerTitle: true,
+  actions: [
+    user,
+  ],
+);
+
 const backButton = BackButton(color: Colors.black);
+
 var carousel = ListView(
   children: [
     CarouselSlider(

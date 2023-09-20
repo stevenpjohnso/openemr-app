@@ -20,10 +20,14 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       child: Scaffold(
           backgroundColor: defaultBackgroundColor,
           appBar: AppBar(
+            leading: logo,
             title: appBarTitle,
+            centerTitle: true,
             backgroundColor: appBarColor,
             elevation: appBarElevation,
-            actions: [user],
+            actions: [
+              user,
+            ],
           ),
           body: TabBarView(
             children: <Widget>[

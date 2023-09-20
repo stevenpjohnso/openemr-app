@@ -20,9 +20,14 @@ class _TabletScaffoldState extends State<TabletScaffold> {
       child: Scaffold(
         backgroundColor: defaultBackgroundColor,
         appBar: AppBar(
+          leading: logo,
           title: appBarTitle,
+          centerTitle: true,
           backgroundColor: appBarColor,
           elevation: appBarElevation,
+          actions: [
+            user,
+          ],
         ),
         body: TabBarView(
           children: <Widget>[
