@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:openemr/theme/theme_service.dart';
 import '../../../util/constants.dart';
@@ -69,6 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () async {
                 await GoogleSignIn().signOut();
                 FirebaseAuth.instance.signOut();
+                Get.toNamed('/login');
               },
               icon: const Icon(Icons.logout)),
         ]),

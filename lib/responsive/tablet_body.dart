@@ -26,7 +26,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
           backgroundColor: appBarColor,
           elevation: appBarElevation,
           actions: [
-            user,
+            profile,
           ],
         ),
         body: TabBarView(

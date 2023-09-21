@@ -2,8 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-var defaultBackgroundColor = const Color(0xFFE0E9EF);
-var appBarColor = const Color(0xFFE0E9EF);
+import '../theme/themes.dart';
+
+var defaultBackgroundColor = Themes().getBackgroundColor();
+var appBarColor = Colors.transparent;
 final appBarTitle = TabBar(
     indicator: BoxDecoration(
         color: Colors.white, borderRadius: BorderRadius.circular(30)),
@@ -40,7 +42,7 @@ final logo = TextButton(
   ),
 );
 
-final user = Padding(
+final profile = Padding(
   padding: const EdgeInsets.all(8.0),
   child: Container(
     width: 60,
@@ -72,7 +74,7 @@ var myAppBar = AppBar(
   title: appBarTitle,
   centerTitle: true,
   actions: [
-    user,
+    profile,
   ],
 );
 

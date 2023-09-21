@@ -25,7 +25,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           backgroundColor: appBarColor,
           elevation: appBarElevation,
           actions: [
-            user,
+            profile,
           ],
         ),
         body: TabBarView(

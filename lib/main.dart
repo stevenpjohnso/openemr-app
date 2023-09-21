@@ -10,7 +10,7 @@ import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 import 'theme/themes.dart';
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -18,6 +18,7 @@ void main() async {
   await GetStorage.init();
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

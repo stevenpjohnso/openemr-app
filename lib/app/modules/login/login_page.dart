@@ -2,9 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import '../../../../util/my_button.dart';
-import '../../../../util/my_textfield.dart';
+import 'package:openemr/util/auth.dart';
+import 'package:openemr/util/login.dart';
 import '../../../../util/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,8 +20,15 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
   bool isVisible = false;
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   // sign user in method
-  Future<void> signUserIn() async {
+  Future<void> signIn() async {
     // show loading circle
     setState(() {
       isLoading = true;
@@ -31,8 +37,8 @@ class _LoginPageState extends State<LoginPage> {
     // try sign in
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
       // Handle errors
@@ -49,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
         isLoading = false;
       });
     }
+    Get.toNamed('/home');
   }
 
   // wrong email message popup
@@ -117,63 +124,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(height: 25),
-
-                // email textfield
-                MyTextField(
-                  controller: emailController,
-                  hintText: 'Email',
-                  obscureText: false,
-                ),
-
-                Visibility(
-                  visible: isVisible,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-
-                      // password textfield
-                      MyTextField(
-                        controller: passwordController,
-                        hintText: 'Password',
-                        obscureText: true,
-                      ),
-                    ],
-                  ),
-                ),
+                Login(),
                 // Loading indicator
                 isLoading
                     ? const CircularProgressIndicator()
                     : const SizedBox.shrink(), // Hide if not loading
-                const SizedBox(height: 10),
-
-                // forgot password?
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.end,
-                //     children: [
-                //       Text(
-                //         'Forgot Password?',
-                //         style: TextStyle(color: Colors.grey[600]),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-
                 const SizedBox(height: 25),
-
-                // sign in button
-                MyButton(
-                  // onTap: signUserIn,
-                  onTap: () {
-                    Get.toNamed('/home');
-                    setState(() {
-                      isVisible = true;
-                    });
-                  },
-                ),
-
-                const SizedBox(height: 50),
 
                 // or continue with
                 Padding(
@@ -210,20 +166,27 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    GestureDetector(
-                        onTap: () {
-                          signInWithGoogle();
-                        },
-                        child: const SquareTile(imagePath: 'assets/img/G.png')),
+                    TextButton(
+                      onPressed: () {
+                        signInWithGoogle();
+                        const AuthPage();
+                      },
+                      child: const SquareTile(imagePath: 'assets/img/G.png'),
+                    ),
 
                     const SizedBox(width: 25),
 
                     // apple button
-                    const SquareTile(imagePath: 'assets/img/A.png')
+                    TextButton(
+                      onPressed: () {
+                        const AuthPage();
+                      },
+                      child: const SquareTile(imagePath: 'assets/img/A.png'),
+                    ),
                   ],
                 ),
 
-                const SizedBox(height: 50),
+                // const SizedBox(height: 50),
 
                 // not a member? register now
                 // Row(
@@ -249,18 +212,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-}
-
-signInWithGoogle() async {
-  GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-  AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-  UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithCredential(credential);
-
-  if (userCredential.user != null) {
-    Get.toNamed('/home');
   }
 }
