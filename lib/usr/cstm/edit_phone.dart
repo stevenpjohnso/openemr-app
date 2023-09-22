@@ -3,7 +3,6 @@ import 'package:string_validator/string_validator.dart';
 import '../../util/constants.dart';
 import '../user_data.dart';
 
-// This class handles the Page to edit the Phone Section of the User Profile.
 class EditPhoneFormPage extends StatefulWidget {
   const EditPhoneFormPage({Key? key}) : super(key: key);
   @override
@@ -56,7 +55,6 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                         height: 100,
                         width: 320,
                         child: TextFormField(
-                          // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your phone number';
@@ -81,7 +79,6 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() &&
                                   isNumeric(phoneController.text)) {
                                 updateUserValue(phoneController.text);

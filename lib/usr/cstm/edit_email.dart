@@ -3,7 +3,6 @@ import 'package:openemr/util/constants.dart';
 import '../user_data.dart';
 import 'package:email_validator/email_validator.dart';
 
-// This class handles the Page to edit the Email Section of the User Profile.
 class EditEmailFormPage extends StatefulWidget {
   const EditEmailFormPage({Key? key}) : super(key: key);
 
@@ -56,7 +55,6 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                         height: 100,
                         width: 320,
                         child: TextFormField(
-                          // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your email.';
@@ -76,7 +74,6 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() &&
                                   EmailValidator.validate(
                                       emailController.text)) {

@@ -5,7 +5,6 @@ class User {
   String phone;
   String id;
 
-  // Constructor
   User({
     required this.image,
     required this.name,

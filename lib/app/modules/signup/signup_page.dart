@@ -1,18 +1,17 @@
 import 'package:get/get.dart';
-
 import 'package:flutter/material.dart';
 import 'package:openemr/util/auth.dart';
 import 'package:openemr/util/login.dart';
 import '../../../../util/square_tile.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isLoading = false;
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.w300),
                 ),
                 Text(
-                  'login'.tr,
+                  'signup'.tr,
                   style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 24,
@@ -87,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -107,21 +106,21 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
+                      'Already a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 5),
                     OutlinedButton(
                       onPressed: () {
-                        Get.toNamed('/signup');
+                        Get.toNamed('/login');
                       },
                       child: const Text(
-                        'Register now',
+                        'Login',
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,

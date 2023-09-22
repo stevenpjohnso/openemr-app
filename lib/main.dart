@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:openemr/app/modules/login/login_binding.dart';
-import 'package:openemr/app/modules/login/login_page.dart';
 import 'package:openemr/theme/theme_service.dart';
+import 'package:openemr/util/auth.dart';
 import 'package:openemr/util/texts.dart';
 import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 import 'theme/themes.dart';
 
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -18,7 +18,6 @@ Future main() async {
   await GetStorage.init();
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
       darkTheme: Themes().darkTheme,
       themeMode: ThemeService().getThemeMode(),
       initialBinding: LoginBinding(),
-      home: const LoginPage(),
+      home: const AuthPage(),
     );
   }
 }

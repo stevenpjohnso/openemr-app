@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +15,10 @@ import '../../../usr/cstm/edit_phone.dart';
 import '../../../usr/user_data.dart';
 import '../../../util/display_image_widget.dart';
 
-// This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ProfilePageState createState() => _ProfilePageState();
 }
 
@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
           IconButton(
               onPressed: () async {
                 await GoogleSignIn().signOut();
-                FirebaseAuth.instance.signOut();
+                await FirebaseAuth.instance.signOut();
                 Get.toNamed('/login');
               },
               icon: const Icon(Icons.logout)),
@@ -78,7 +78,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Widget builds the display item with the proper formatting to display the user's info
   Widget buildUserInfoDisplay(String getValue, String title, Widget editPage) =>
       Padding(
           padding: const EdgeInsets.only(bottom: 10),
@@ -124,12 +123,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ));
 
-  // Refrshes the Page after updating user info.
   FutureOr onGoBack(dynamic value) {
     setState(() {});
   }
 
-  // Handles navigation and prompts refresh.
   void navigateIDPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);

@@ -84,7 +84,6 @@ var carousel = ListView(
   children: [
     CarouselSlider(
       items: [
-        //1st Image of Slider
         Container(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
@@ -96,8 +95,6 @@ var carousel = ListView(
             ),
           ),
         ),
-
-        //2nd Image of Slider
         Container(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
@@ -105,8 +102,6 @@ var carousel = ListView(
             color: const Color(0xE5ECF8FF),
           ),
         ),
-
-        //3rd Image of Slider
         Container(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
@@ -114,8 +109,6 @@ var carousel = ListView(
             color: const Color(0xE5ECF8FF),
           ),
         ),
-
-        //4th Image of Slider
         Container(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
@@ -123,8 +116,6 @@ var carousel = ListView(
             color: const Color(0xE5ECF8FF),
           ),
         ),
-
-        //5th Image of Slider
         Container(
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
@@ -133,8 +124,6 @@ var carousel = ListView(
           ),
         ),
       ],
-
-      //Slider Container properties
       options: CarouselOptions(
         height: 180.0,
         enlargeCenterPage: true,

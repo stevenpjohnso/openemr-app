@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../util/constants.dart';
 import '../user_data.dart';
 
-// This class handles the Page to edit the ID Section of the User Profile.
 class EditIDFormPage extends StatefulWidget {
   const EditIDFormPage({Key? key}) : super(key: key);
 
@@ -55,7 +54,6 @@ class EditIDFormPageState extends State<EditIDFormPage> {
                         height: 100,
                         width: 320,
                         child: TextFormField(
-                          // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your id.';
@@ -75,7 +73,6 @@ class EditIDFormPageState extends State<EditIDFormPage> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Validate returns true if the form is valid, or false otherwise.
                             },
                             child: const Text(
                               'Update',
