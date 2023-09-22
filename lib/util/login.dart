@@ -3,8 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:openemr/util/auth.dart';
-import 'package:openemr/util/password_field.dart';
+import 'password_field.dart';
 import 'email_field.dart';
 import 'my_button.dart';
 
@@ -52,7 +51,6 @@ class _LoginState extends State<Login> {
         isLoading = false;
       });
     }
-    const AuthPage();
   }
 
   void wrongEmailMessage() {
@@ -172,20 +170,20 @@ class _LoginState extends State<Login> {
 
                     MyButton(
                       onTap: () {
+                        // final form = formKey.currentState!;
+                        // if (form.validate()) {
+                        //   final email = emailController.text;
+
                         setState(() {
                           isVisible = true;
                         });
                         signIn();
 
-                        final form = formKey.currentState!;
-                        if (form.validate()) {
-                          final email = emailController.text;
-
-                          ScaffoldMessenger.of(context)
-                            ..removeCurrentSnackBar()
-                            ..showSnackBar(
-                                SnackBar(content: Text('Signed in as $email')));
-                        }
+                        // ScaffoldMessenger.of(context)
+                        //   ..removeCurrentSnackBar()
+                        //   ..showSnackBar(
+                        //       SnackBar(content: Text('Signed in as $email')));
+                        // }
                       },
                       label: isVisible ? 'Sign In' : 'Next',
                     )

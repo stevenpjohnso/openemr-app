@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../app/modules/login/login_page.dart';
 import '../app/modules/home/home_page.dart';
 
@@ -23,17 +21,4 @@ class AuthPage extends StatelessWidget {
               return const LoginPage();
             }
           }));
-}
-
-signInWithGoogle() async {
-  GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-  AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-  UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithCredential(credential);
-
-  if (userCredential.user != null) {
-    Get.toNamed('/home');
-  }
 }

@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:openemr/util/auth.dart';
 import 'package:openemr/util/login.dart';
 import '../../../../util/square_tile.dart';
@@ -17,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
   bool isLoading = false;
   bool isVisible = false;
+  bool isAuthenticated = false;
 
   @override
   void dispose() {
@@ -136,5 +139,18 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+}
+
+signInWithGoogle() async {
+  GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+  UserCredential userCredential =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+  if (userCredential.user != null) {
+    Get.toNamed('/home');
   }
 }
