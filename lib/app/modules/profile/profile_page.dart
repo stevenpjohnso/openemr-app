@@ -13,7 +13,7 @@ import '../../../usr/cstm/edit_image.dart';
 import '../../../usr/cstm/edit_name.dart';
 import '../../../usr/cstm/edit_phone.dart';
 import '../../../usr/user_data.dart';
-import '../../../util/display_image_widget.dart';
+import '../../../util/profile_pic.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
